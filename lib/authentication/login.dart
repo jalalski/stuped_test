@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:stuped_test/components/materailbutton.dart';
+import 'package:stuped_test/components/sps.dart';
+import 'package:stuped_test/components/textfont.dart';
+import 'package:stuped_test/components/textformfild.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,6 +12,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,38 +41,75 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "login",
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
+                      const Textfont(
+                          text: "Login",
+                          color: Colors.black,
+                          size: 40,
+                          bold: true),
+                      const Sps(height: 7),
+                      const Textfont(
+                          text: "Enter your information to get your degree",
+                          color: Colors.black54,
+                          size: 17,
+                          bold: false),
+                      const Sps(height: 50),
+                      const Textfont(
+                          text: "Name",
+                          color: Colors.black,
+                          size: 19,
+                          bold: true),
+                      const Sps(height: 7),
+                      CustomTextFormFild(
+                          hint: "  Enter your first and last name",
+                          controller: name),
+                      const Sps(height: 20),
+                      const Textfont(
+                          text: "Email",
+                          color: Colors.black,
+                          size: 19,
+                          bold: true),
                       const SizedBox(height: 7),
-                      Text(
-                        "Enter your information to get your degree",
-                        style: Theme.of(context).textTheme.bodyMedium,
+                      CustomTextFormFild(
+                          hint: "Enter your email", controller: email),
+                      Container(
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                            onPressed: () {},
+                            child: const Text("Forget password?")),
                       ),
-                      const SizedBox(height: 20),
-                      Text(
-                        "Name",
-                        style: Theme.of(context).textTheme.titleSmall,
+                      Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 30),
+                          child: CustomMaterailButoon(
+                            onPressed: () {},
+                            color: Colors.blue,
+                            child: const Textfont(
+                                text: "Login",
+                                color: Colors.white,
+                                size: 20,
+                                bold: true),
+                          )),
+                      MaterialButton(
+                        onPressed: () {},
+                        color: const Color.fromARGB(255, 254, 104, 93),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Textfont(
+                                text: "Login with google  ",
+                                color: Colors.white,
+                                size: 20,
+                                bold: true),
+                            SizedBox(
+                              height: 25,
+                              width: 25,
+                              child: Image.asset("images/googlelogo.png"),
+                            )
+                          ],
+                        ),
                       ),
-                      const SizedBox(height: 7),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25),
-                                borderSide: const BorderSide(
-                                    color: Color.fromARGB(255, 245, 245, 245))),
-                            hintText: "  Enter your first and last name",
-                            hintStyle: const TextStyle(
-                                fontSize: 15, color: Colors.black54),
-                            fillColor: const Color.fromARGB(255, 245, 245, 245),
-                            filled: true,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25),
-                                borderSide: const BorderSide(
-                                    color:
-                                        Color.fromARGB(255, 245, 245, 245)))),
-                      ),
+                      const Sps(height: 30),
+                      const Center(
+                          child: Text("Dont have an Account? Regester"))
                     ],
                   ),
                 ))
